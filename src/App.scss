@@ -1,0 +1,112 @@
+//colours
+$c-grey: #ccc;
+
+//units
+$u-spacing: 20px;
+$u-breakPoint: 500px;
+
+.app {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: $u-spacing;
+
+  &__header {
+    text-align: center;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0 0 $u-spacing;
+  }
+
+  p,
+  label {
+    margin: 0 0 ($u-spacing / 2);
+  }
+}
+
+.toolbar {
+  border-bottom: 1px solid $c-grey;
+  border-top: 1px solid $c-grey;
+  margin-bottom: $u-spacing;
+
+  @media screen and (min-width: $u-breakPoint) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.filter {
+  margin: $u-spacing 0;
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__filter-item {
+    padding-right: $u-spacing / 2;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &__label {
+      padding-left: $u-spacing / 4;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.sort {
+  margin: $u-spacing 0;
+
+  @media screen and (min-width: $u-breakPoint) {
+    padding-right: $u-spacing;
+  }
+
+  label {
+    display: block;
+  }
+}
+
+.hotel-list {
+  &__title {
+    &__small {
+      font-size: 16px;
+      font-weight: normal;
+
+      &::before {
+        content: ' – ';
+      }
+    }
+  }
+
+  &__item {
+    background: lighten($c-grey, 15%);
+    box-shadow: 2px 2px 2px 0 $c-grey;
+    margin-bottom: $u-spacing;
+    padding: $u-spacing;
+
+    @media screen and (min-width: $u-breakPoint) {
+      &__header {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__title {
+      text-transform: capitalize;
+    }
+  }
+}
+
+.stars {
+  margin-bottom: $u-spacing / 2;
+
+  &__star {
+    height: $u-spacing;
+    width: $u-spacing;
+  }
+}
