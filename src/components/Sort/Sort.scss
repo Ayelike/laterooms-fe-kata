@@ -1,0 +1,13 @@
+@import '../../variables';
+
+.sort {
+    margin: $u-spacing 0;
+  
+    @media screen and (min-width: $u-breakPoint) {
+      padding-right: $u-spacing;
+    }
+  
+    label {
+      display: block;
+    }
+  }

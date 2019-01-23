@@ -1,0 +1,41 @@
+@import '../../variables';
+
+.hotel-list {
+    &__title {
+      &__small {
+        font-size: 16px;
+        font-weight: normal;
+  
+        &::before {
+          content: ' – ';
+        }
+      }
+    }
+  
+    &__item {
+      background: lighten($c-grey, 15%);
+      box-shadow: 2px 2px 2px 0 $c-grey;
+      margin-bottom: $u-spacing;
+      padding: $u-spacing;
+  
+      @media screen and (min-width: $u-breakPoint) {
+        &__header {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+  
+      &__title {
+        text-transform: capitalize;
+      }
+    }
+  }
+  
+  .stars {
+    margin-bottom: $u-spacing / 2;
+  
+    &__star {
+      height: $u-spacing;
+      width: $u-spacing;
+    }
+  }

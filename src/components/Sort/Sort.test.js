@@ -15,3 +15,8 @@ it('renders component title', () => {
   const { getByText } = render(<Provider store={store}><Sort /></Provider>);
   expect(getByText('Sort by:')).toBeInTheDocument();
 });
+
+it('renders sort dropdown', () => {
+  const { queryByTestId } = render(<Provider store={store}><Sort /></Provider>);
+  expect(queryByTestId('ddlSortBy')).toBeInTheDocument();
+});

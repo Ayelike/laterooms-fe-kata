@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import data from '../../data/hotels.json';
+import './HotelList.scss';
 
 //assets
 import star from '../../assets/images/star.png';

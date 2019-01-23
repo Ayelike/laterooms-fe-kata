@@ -1,0 +1,23 @@
+@import '../../variables';
+
+.filter {
+    margin: $u-spacing 0;
+  
+    &__filters {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    &__filter-item {
+      padding-right: $u-spacing / 2;
+  
+      &:last-child {
+        padding-right: 0;
+      }
+  
+      &__label {
+        padding-left: $u-spacing / 4;
+        text-transform: capitalize;
+      }
+    }
+  }
