@@ -9,11 +9,11 @@ import starFull from '../assets/images/starFull.png';
 const Stars = props => {
     const stars = [];
 
-    for (let i = 0; i < 5; i++) {
-        if (props.rating > i) {
-            stars.push(<img alt="Filled in star" className="stars__star" key={'star' + i} src={starFull} />);
+    for (const starCount of Array(5).keys()) {
+        if (props.rating > starCount) {
+            stars.push(<img alt="Filled in star" className="stars__star" key={'star' + starCount} src={starFull} />);
         } else {
-            stars.push(<img alt="Empty star" className="stars__star" key={'star' + i} src={star} />);
+            stars.push(<img alt="Empty star" className="stars__star" key={'star' + starCount} src={star} />);
         }
     }
 
@@ -27,19 +27,20 @@ const Stars = props => {
 
 class HotelList extends React.Component {
     render() {
+        const { filterBy, sortBy } = this.props;
         let hotelData = JSON.parse(JSON.stringify(data));
 
         //FILTER
         //Find hotels that don't meet the current filter
-        for (const hotelIndex in hotelData) {
-            hotelData[hotelIndex].remove = false;
+        Object.keys(hotelData).forEach(function(key) {
+            hotelData[key].remove = false;
 
-            for (const filter of this.props.filterBy) {
-                if (hotelData[hotelIndex].facilities.indexOf(filter) < 0) {
-                    hotelData[hotelIndex].remove = true;
+            for (const filter of filterBy) {
+                if (!hotelData[key].facilities.includes(filter)) {
+                    hotelData[key].remove = true;
                 }
             }
-        }
+        });
 
         //remove filtered hotels
         hotelData = hotelData.filter(hotel => hotel.remove === false);
@@ -54,14 +55,14 @@ class HotelList extends React.Component {
         });
 
         //Sort by star rating if required
-        if (this.props.sortBy === 'starRatingAsc') {
+        if (sortBy === 'starRatingAsc') {
             //rating ascending
             hotelData.sort(function(a, b) {
                 if (a.starRating < b.starRating) return -1;
                 if (a.starRating > b.starRating) return 1;
                 return 0;
             });
-        } else if (this.props.sortBy === 'starRatingDesc') {
+        } else if (sortBy === 'starRatingDesc') {
             //rating descending
             hotelData.sort(function(a, b) {
                 if (a.starRating < b.starRating) return 1;
@@ -89,8 +90,8 @@ class HotelList extends React.Component {
             <div className="hotel-list">
                 <h2 className="hotel-list__title">
                     Your Hotels
-                    {this.props.filterBy.length > 0 &&
-                        <span className="hotel-list__title__small">Filtered by: {this.props.filterBy.join(', ')}</span>
+                    {filterBy.length > 0 &&
+                        <span className="hotel-list__title__small">Filtered by: {filterBy.join(', ')}</span>
                     }
                 </h2>
                 {hotelData.length > 0 ?
