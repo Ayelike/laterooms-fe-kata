@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateFilter } from '../actions'; 
-import hotelData from '../data/hotels.json';
-import { getFacilities, SortAlphabetical } from '../utilities';
+import { updateFilter } from '../../actions'; 
+import hotelData from '../../data/hotels.json';
+import { getFacilities, SortAlphabetical } from '../../utilities';
 
 //get unique list of hotel facilities
 const facilities = getFacilities(hotelData);

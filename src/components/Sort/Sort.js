@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateSort } from '../actions'; 
+import { updateSort } from '../../actions'; 
 
 class Sort extends React.Component {
     render() {

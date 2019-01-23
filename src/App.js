@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 //components
-import Filter from './components/Filter';
-import HotelList from './components/HotelList';
-import Sort from './components/Sort';
+import Filter from './components/Filter/Filter';
+import HotelList from './components/HotelList/HotelList';
+import Sort from './components/Sort/Sort';
 
 class App extends Component {
   render() {

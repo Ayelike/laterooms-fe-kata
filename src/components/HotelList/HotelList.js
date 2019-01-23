@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import data from '../data/hotels.json';
+import data from '../../data/hotels.json';
 
 //assets
-import star from '../assets/images/star.png';
-import starFull from '../assets/images/starFull.png';
+import star from '../../assets/images/star.png';
+import starFull from '../../assets/images/starFull.png';
 
 const Stars = props => {
     const stars = [];
@@ -22,7 +22,6 @@ const Stars = props => {
             {stars}
         </div>
     );
-    
 };
 
 class HotelList extends React.Component {
