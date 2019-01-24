@@ -19,11 +19,11 @@ it('renders component title', () => {
 
 it('renders hotel list', () => {
   const { getByText } = render(<Provider store={store}><HotelList /></Provider>);
-  for (const hotel of hotelData) {
-    expect(getByText(hotel.name)).toBeInTheDocument();
-    expect(getByText('Rating: ' + hotel.starRating + ' stars')).toBeInTheDocument();
-    if (hotel.facilities.length > 0) {
-      expect(getByText('Facilities: ' + hotel.facilities.join(', '))).toBeInTheDocument();
+  Object.keys(hotelData).forEach(function(key) {
+    expect(getByText(hotelData[key].name)).toBeInTheDocument();
+    expect(getByText('Rating: ' + hotelData[key].starRating + ' stars')).toBeInTheDocument();
+    if (hotelData[key].facilities.length > 0) {
+      expect(getByText('Facilities: ' + hotelData[key].facilities.join(', '))).toBeInTheDocument();
     }
-  }
+  });
 });

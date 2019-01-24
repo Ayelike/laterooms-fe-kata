@@ -9,14 +9,15 @@ import starFull from '../../assets/images/starFull.png';
 
 const Stars = props => {
     const stars = [];
+    const maxStars = Array.from(new Array(5), (val, index) => index);
 
-    for (const starCount of Array(5).keys()) {
-        if (props.rating > starCount) {
-            stars.push(<img alt="Filled in star" className="stars__star" key={'star' + starCount} src={starFull} />);
+    Object.keys(maxStars).forEach(function(key) {
+        if (props.rating > key) {
+            stars.push(<img alt="Filled in star" className="stars__star" key={'star' + key} src={starFull} />);
         } else {
-            stars.push(<img alt="Empty star" className="stars__star" key={'star' + starCount} src={star} />);
+            stars.push(<img alt="Empty star" className="stars__star" key={'star' + key} src={star} />);
         }
-    }
+    });
 
     return (
         <div className="stars">
@@ -32,14 +33,14 @@ class HotelList extends React.Component {
 
         //FILTER
         //Find hotels that don't meet the current filter
-        Object.keys(hotelData).forEach(function(key) {
-            hotelData[key].remove = false;
+        Object.keys(hotelData).forEach(function(keyHotel) {
+            hotelData[keyHotel].remove = false;
 
-            for (const filter of filterBy) {
-                if (!hotelData[key].facilities.includes(filter)) {
-                    hotelData[key].remove = true;
+            Object.keys(filterBy).forEach(function(keyFilter) {
+                if (!hotelData[keyHotel].facilities.includes(filterBy[keyFilter])) {
+                    hotelData[keyHotel].remove = true;
                 }
-            }
+            });
         });
 
         //remove filtered hotels

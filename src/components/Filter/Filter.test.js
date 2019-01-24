@@ -24,8 +24,8 @@ if (facilities.length > 0) {
 
   it('renders filter list', () => {
     const { getByText } = render(<Provider store={store}><Filter /></Provider>);
-    for (const facility of facilities) {
-      expect(getByText(facility)).toBeInTheDocument();
-    }
+    Object.keys(facilities).forEach(function(key) {
+      expect(getByText(facilities[key])).toBeInTheDocument();
+    });
   });
 }

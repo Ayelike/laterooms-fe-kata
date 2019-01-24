@@ -1,13 +1,13 @@
 export const getFacilities = (hotelData) => {
     const facilities = [];
 
-    for (const hotel of hotelData) {
-        for (const facility of hotel.facilities) {
-            if (!facilities.includes(facility)) {
-                facilities.push(facility);
+    Object.keys(hotelData).forEach(function(keyHotel) {
+        Object.keys(hotelData[keyHotel].facilities).forEach(function(keyFacility) {
+            if (!facilities.includes(hotelData[keyHotel].facilities[keyFacility])) {
+                facilities.push(hotelData[keyHotel].facilities[keyFacility]);
             }
-        }
-    }
+        });
+    });
     
     return SortAlphabetical(facilities);
 }
